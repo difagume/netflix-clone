@@ -1,11 +1,9 @@
 import { Github, Google } from '@/components/Icons'
 import Input from '@/components/Input'
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/router'
 import React, { useCallback, useState } from 'react'
 
 const Auth = () => {
-	const router = useRouter()
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -17,18 +15,15 @@ const Auth = () => {
 
 	const login = useCallback(async () => {
 		try {
-			const res = await signIn('credentials', { email, password, redirect: false, callbackUrl: '/' })
+			const res = await signIn('credentials', { email, password, callbackUrl: '/profiles' })
 			if (res?.ok === false) {
 				console.error(res.error)
 				// enqueueSnackbar(res.error, { variant: 'warning' })
-			} else {
-				router.push('/')
-				// setCargando(false)
 			}
 		} catch (error) {
 			console.error(error)
 		}
-	}, [email, password, router])
+	}, [email, password])
 
 	const register = useCallback(async () => {
 		try {
@@ -92,13 +87,13 @@ const Auth = () => {
 						<div className='flex flex-row items-center gap-4 mt-8 justify-center'>
 							<div
 								className='w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition'
-								onClick={() => signIn('google', { callbackUrl: '/' })}
+								onClick={() => signIn('google', { callbackUrl: '/profiles' })}
 							>
 								<Google width='32px' height='32px' />
 							</div>
 							<div
 								className='w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition'
-								onClick={() => signIn('github', { callbackUrl: '/' })}
+								onClick={() => signIn('github', { callbackUrl: '/profiles' })}
 							>
 								<Github width='32px' height='32px' />
 							</div>

@@ -9,7 +9,7 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<h1 className='text-4xl text-white'>Netflix Clone</h1>
-			<p className='text-white'>Logged in as: {user?.name}</p>
+			<p className='text-white'>Logged in as: {user?.email}</p>
 
 			<button className='h-10 w-full bg-white' onClick={() => signOut()}>
 				Logout
