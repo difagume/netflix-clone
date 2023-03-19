@@ -7,6 +7,10 @@ import { z } from 'zod'
 const server = z.object({
 	DATABASE_URL: z.string().url(),
 	NODE_ENV: z.enum(['development', 'test', 'production']),
+	GITHUB_ID: z.string(),
+	GITHUB_SECRET: z.string(),
+	GOOGLE_CLIENT_ID: z.string(),
+	GOOGLE_CLIENT_SECRET: z.string(),
 	NEXTAUTH_SECRET: process.env.NODE_ENV === 'production' ? z.string().min(1) : z.string().min(1).optional(),
 	NEXTAUTH_JWT_SECRET: process.env.NODE_ENV === 'production' ? z.string().min(1) : z.string().min(1).optional(),
 	NEXTAUTH_URL: z.preprocess(
@@ -38,6 +42,10 @@ const client = z.object({
 const processEnv = {
 	DATABASE_URL: process.env.DATABASE_URL,
 	NODE_ENV: process.env.NODE_ENV,
+	GITHUB_ID: process.env.GITHUB_ID,
+	GITHUB_SECRET: process.env.GITHUB_SECRET,
+	GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+	GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
 	NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
 	NEXTAUTH_JWT_SECRET: process.env.NEXTAUTH_JWT_SECRET,
 	NEXTAUTH_URL: process.env.NEXTAUTH_URL,

@@ -5,6 +5,8 @@ import { compare } from 'bcrypt'
 import { type GetServerSidePropsContext } from 'next'
 import { getServerSession, type DefaultSession, type NextAuthOptions } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
+import GithubProvider from 'next-auth/providers/github'
+import GoogleProvider from 'next-auth/providers/google'
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -77,6 +79,14 @@ export const authOptions: NextAuthOptions = {
 
 				return user
 			}
+		}),
+		GithubProvider({
+			clientId: env.GITHUB_ID,
+			clientSecret: env.GITHUB_SECRET
+		}),
+		GoogleProvider({
+			clientId: env.GOOGLE_CLIENT_ID,
+			clientSecret: env.GOOGLE_CLIENT_SECRET
 		})
 		/* DiscordProvider({
 			clientId: env.DISCORD_CLIENT_ID,
