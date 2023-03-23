@@ -1,4 +1,4 @@
-import { Github, Google } from '@/components/Icons'
+import { GithubIco, GoogleIco } from '@/components/Icons'
 import Input from '@/components/Input'
 import { signIn } from 'next-auth/react'
 import React, { useCallback, useState } from 'react'
@@ -89,13 +89,13 @@ const Auth = () => {
 								className='w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition'
 								onClick={() => signIn('google', { callbackUrl: '/profiles' })}
 							>
-								<Google width='32px' height='32px' />
+								<GoogleIco width='32px' height='32px' />
 							</div>
 							<div
 								className='w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition'
 								onClick={() => signIn('github', { callbackUrl: '/profiles' })}
 							>
-								<Github width='32px' height='32px' />
+								<GithubIco width='32px' height='32px' />
 							</div>
 						</div>
 						<p className='text-neutral-500 mt-12'>

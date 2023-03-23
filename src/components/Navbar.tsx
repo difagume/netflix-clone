@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import AccountMenu from './AccountMenu'
-import { Bell, ChevronDown, MagnifyingGlass } from './Icons'
+import { BellIco, ChevronDownIco, MagnifyingGlassIco } from './Icons'
 import MobileMenu from './MobileMenu'
 import NavbarItem from './NavbarItem'
 
@@ -56,23 +56,23 @@ const Navbar = () => {
 					className='lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative'
 				>
 					<p className='text-white text-sm'>Browse</p>
-					<ChevronDown
+					<ChevronDownIco
 						className={`w-4 text-white fill-white transition ${showMobileMenu ? 'rotate-180' : 'rotate-0'}`}
 					/>
 					<MobileMenu visible={showMobileMenu} />
 				</div>
 				<div className='flex flex-row ml-auto gap-7 items-center'>
 					<div className='text-gray-200 hover:text-gray-300 cursor-pointer transition'>
-						<MagnifyingGlass className='w-6' />
+						<MagnifyingGlassIco className='w-6' />
 					</div>
 					<div className='text-gray-200 hover:text-gray-300 cursor-pointer transition'>
-						<Bell className='w-6' />
+						<BellIco className='w-6' />
 					</div>
 					<div onClick={toggleAccountMenu} className='flex flex-row items-center gap-2 cursor-pointer relative'>
 						<div className='w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden'>
 							<img src='/images/default-blue.png' alt='' />
 						</div>
-						<ChevronDown
+						<ChevronDownIco
 							className={`w-4 text-white fill-white transition ${showAccountMenu ? 'rotate-180' : 'rotate-0'}`}
 						/>
 						<AccountMenu visible={showAccountMenu} />
