@@ -1,7 +1,7 @@
 import useCurrentUser from '@/hooks/useCurrentUser'
 import useFavorites from '@/hooks/useFavorites'
 import { useCallback, useMemo } from 'react'
-import { Check, Plus } from './Icons'
+import { CheckIco, PlusIco } from './Icons'
 
 interface FavoriteButtonProps {
 	movieId: string
@@ -18,23 +18,14 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
 	}, [currentUser, movieId])
 
 	const toggleFavorites = useCallback(async () => {
-		let data
-
-		if (isFavorite) {
-			const response = await fetch('/api/favorite', {
-				method: 'DELETE',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ movieId })
-			})
-			data = await response.json()
-		} else {
-			const response = await fetch('/api/favorite', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ movieId })
-			})
-			data = await response.json()
+		const options = {
+			method: isFavorite ? 'DELETE' : 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ movieId })
 		}
+
+		const response = await fetch('/api/favorite', options)
+		const data = await response.json()
 
 		const updatedFavoriteIds = data.favoriteIds
 
@@ -45,7 +36,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
 		mutateFavorites()
 	}, [movieId, isFavorite, currentUser, mutate, mutateFavorites])
 
-	const Icon = isFavorite ? Check : Plus
+	const Icon = isFavorite ? CheckIco : PlusIco
 
 	return (
 		<div
