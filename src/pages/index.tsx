@@ -1,12 +1,14 @@
 import Billboard from '@/components/Billboard'
 import MovieList from '@/components/MovieList'
 import Navbar from '@/components/Navbar'
+import useFavorites from '@/hooks/useFavorites'
 import useMovieList from '@/hooks/useMovieList'
-import { NextPageContext, type NextPage } from 'next'
+import { type NextPage, NextPageContext } from 'next'
 import { getSession } from 'next-auth/react'
 
 const Home: NextPage = () => {
 	const { data: movies = [] } = useMovieList()
+	const { data: favorites = [] } = useFavorites()
 
 	return (
 		<>
@@ -14,6 +16,7 @@ const Home: NextPage = () => {
 			<Billboard />
 			<div className='pb-40'>
 				<MovieList title='Trending Now' data={movies} />
+				<MovieList title='My List' data={favorites} />
 			</div>
 		</>
 	)
