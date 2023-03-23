@@ -1,3 +1,4 @@
+import Billboard from '@/components/Billboard'
 import Navbar from '@/components/Navbar'
 import useCurrentUser from '@/hooks/useCurrentUser'
 import { NextPageContext, type NextPage } from 'next'
@@ -7,7 +8,12 @@ const Home: NextPage = () => {
 	// const hello = api.example.hello.useQuery({ text: 'from tRPC' })
 	const { data: user } = useCurrentUser()
 
-	return <Navbar />
+	return (
+		<>
+			<Navbar />
+			<Billboard />
+		</>
+	)
 }
 
 export async function getServerSideProps(context: NextPageContext) {
