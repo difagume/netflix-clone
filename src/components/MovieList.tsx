@@ -1,4 +1,4 @@
-import { MovieInterface } from '@/types'
+import { type MovieInterface } from '@/types'
 import { isEmpty } from 'lodash'
 import MovieCard from './MovieCard'
 

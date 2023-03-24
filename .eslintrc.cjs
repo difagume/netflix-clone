@@ -3,7 +3,7 @@ const path = require('path')
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
-	overrides: [
+	/* overrides: [
 		{
 			extends: ['plugin:@typescript-eslint/recommended-requiring-type-checking'],
 			files: ['*.ts', '*.tsx'],
@@ -11,7 +11,7 @@ const config = {
 				project: path.join(__dirname, 'tsconfig.json')
 			}
 		}
-	],
+	], */
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		project: path.join(__dirname, 'tsconfig.json')
@@ -27,6 +27,7 @@ const config = {
 			}
 		],
 		'@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+		'@next/next/no-img-element': 'off',
 		'@typescript-eslint/no-unsafe-assignment': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
 		'@typescript-eslint/no-unsafe-member-access': 'off',

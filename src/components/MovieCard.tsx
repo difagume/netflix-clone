@@ -1,5 +1,5 @@
 import useInfoModal from '@/hooks/useInfoModal'
-import { MovieInterface } from '@/types'
+import { type MovieInterface } from '@/types'
 import { useRouter } from 'next/router'
 import FavoriteButton from './FavoriteButton'
 import { ChevronDownIco, PlayIco } from './Icons'
