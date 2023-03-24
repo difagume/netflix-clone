@@ -1,5 +1,5 @@
 import { prisma } from '@/server/db'
-import { NextApiRequest } from 'next'
+import { type NextApiRequest } from 'next'
 import { getSession } from 'next-auth/react'
 
 const serverAuth = async (req: NextApiRequest) => {

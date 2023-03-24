@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar'
 import useFavorites from '@/hooks/useFavorites'
 import useInfoModal from '@/hooks/useInfoModal'
 import useMovieList from '@/hooks/useMovieList'
-import { NextPageContext, type NextPage } from 'next'
+import { type NextPageContext, type NextPage } from 'next'
 import { getSession } from 'next-auth/react'
 
 const Home: NextPage = () => {

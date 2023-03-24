@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { without } from 'lodash'
 import serverAuth from '@/utils/serverAuth'
 import { prisma } from '@/server/db'
