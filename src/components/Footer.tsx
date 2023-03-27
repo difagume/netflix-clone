@@ -1,6 +1,6 @@
 const Footer: React.FC = () => {
 	return (
-		<footer className='flex items-center justify-center py-6'>
+		<footer className='flex items-center justify-center py-6 sticky top-[100vh]'>
 			<div className='text-gray-400 text-xs w-5/6 bg-black bg-opacity-70 rounded-md p-3 text-center'>
 				<p>
 					This website is an educational project and is not intended to be an official Netflix replica. The content used
