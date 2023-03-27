@@ -1,4 +1,5 @@
 import Billboard from '@/components/Billboard'
+import Footer from '@/components/Footer'
 import InfoModal from '@/components/InfoModal'
 import MovieList from '@/components/MovieList'
 import Navbar from '@/components/Navbar'
@@ -7,6 +8,7 @@ import useInfoModal from '@/hooks/useInfoModal'
 import useMovieList from '@/hooks/useMovieList'
 import { type NextPageContext, type NextPage } from 'next'
 import { getSession } from 'next-auth/react'
+import Head from 'next/head'
 
 const Home: NextPage = () => {
 	const { data: movies = [] } = useMovieList()
@@ -15,6 +17,21 @@ const Home: NextPage = () => {
 
 	return (
 		<>
+			<Head>
+				<title>Netflix Clone App</title>
+				<meta
+					property='description'
+					content='This website is an educational project and is not intended to be an official Netflix replica. 
+					The content used on this site is for demonstration and testing of programming and web design skills only. 
+					Access to actual Netflix content is not provided. 
+					The project is for educational purposes and we are not responsible for any misuse of the site. 
+					The end user is responsible for their use of the site.'
+				/>
+				<meta
+					name='keywords'
+					content='Next.js, React.js, create-t3-app, Prisma.io, Tailwind CSS, NextAuth.js, Typescript, Mongo'
+				/>
+			</Head>
 			<InfoModal visible={isOpen} onClose={closeModal} />
 			<Navbar />
 			<Billboard />
@@ -22,6 +39,7 @@ const Home: NextPage = () => {
 				<MovieList title='Trending Now' data={movies} />
 				<MovieList title='My List' data={favorites} />
 			</div>
+			<Footer />
 		</>
 	)
 }
