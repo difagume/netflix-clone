@@ -1,4 +1,5 @@
 ## Tutorial de Antonio Erdeljac https://youtu.be/mqUN4N2q4qY
+### repositorio https://github.com/AntonioErdeljac/next-netflix-tutorial
 
   ## Proyecto desarrollado con create-t3-app que consiste en usar:
   
