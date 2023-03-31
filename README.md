@@ -15,9 +15,16 @@
 
     pnpm i
 
+##
 ### Variables de entorno
 Copiar o renombrar archivo `.env.example`  a `.env` y configurar las variables de entorno
 
+##
+### Tmdb Api
+Registrarse en el sitio y copiar la clave de la Api en las variables de entorno
+https://www.themoviedb.org/settings/api
+
+##
 ### Levantar la aplicación
 
     pnpm dev
