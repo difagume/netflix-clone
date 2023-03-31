@@ -1,4 +1,4 @@
-import { TmdbMovie } from '@/types'
+import { type TmdbMovie } from '@/types'
 import { create } from 'zustand'
 
 interface StoreState {

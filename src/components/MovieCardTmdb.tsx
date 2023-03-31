@@ -4,7 +4,7 @@ import BlurImage from './BlurImage'
 import FavoriteButton from './FavoriteButton'
 import { ChevronDownIcon, PlayIcon, TmdbIcon } from './Icons'
 import { useAppStore } from '@/hooks/useAppStore'
-import { TmdbMovie } from '@/types'
+import { type TmdbMovie } from '@/types'
 import { setNew } from '@/utils/utils'
 
 const tmdbImageUl = `${env.NEXT_PUBLIC_TMDB_IMG_URL}/t/p/w300`

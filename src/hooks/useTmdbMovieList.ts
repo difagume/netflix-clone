@@ -6,7 +6,7 @@ import { useAppStore } from './useAppStore'
 const useTmdbMovieList = () => {
 	const { tmdbPageIndex, updateTmdbMovies } = useAppStore()
 
-	const { data, error, isLoading, mutate } = useSwr(`/api/movies/tmdb?page=${tmdbPageIndex}`, fetcher, {
+	const { data, error, isLoading } = useSwr(`/api/movies/tmdb?page=${tmdbPageIndex}`, fetcher, {
 		revalidateIfStale: false,
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false

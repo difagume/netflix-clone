@@ -1,7 +1,7 @@
 import Footer from '@/components/Footer'
 import { GithubIcon, GoogleIcon } from '@/components/Icons'
 import Input from '@/components/Input'
-import { NextPage } from 'next'
+import { type NextPage } from 'next'
 import { signIn } from 'next-auth/react'
 import Head from 'next/head'
 import React, { useCallback, useState } from 'react'

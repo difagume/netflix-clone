@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import useMovie from '@/hooks/useMovie'
 import { ArrowLeftIcon } from '@/components/Icons'
 import useTmdbMovieVideos from '@/hooks/useTmdbMovieVideos'
-import YouTube, { YouTubeProps } from 'react-youtube'
+import YouTube, { type YouTubeProps } from 'react-youtube'
 import { env } from '@/env.mjs'
 
 const Watch = () => {

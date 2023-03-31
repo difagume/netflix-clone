@@ -1,4 +1,4 @@
-import { TmdbMovie, type MovieInterface } from '@/types'
+import { type TmdbMovie, type MovieInterface } from '@/types'
 import { isEmpty } from 'lodash'
 import MovieCard from './MovieCard'
 import MovieCardTmdb from './MovieCardTmdb'

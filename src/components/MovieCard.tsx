@@ -1,4 +1,3 @@
-import { env } from '@/env.mjs'
 import { useAppStore } from '@/hooks/useAppStore'
 import { type MovieInterface } from '@/types'
 import { useRouter } from 'next/router'
