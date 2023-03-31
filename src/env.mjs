@@ -11,6 +11,8 @@ const server = z.object({
 	GITHUB_SECRET: z.string(),
 	GOOGLE_CLIENT_ID: z.string(),
 	GOOGLE_CLIENT_SECRET: z.string(),
+	TMDB_URL: z.string().url(),
+	TMDB_API: z.string(),
 	NEXTAUTH_SECRET: process.env.NODE_ENV === 'production' ? z.string().min(1) : z.string().min(1).optional(),
 	NEXTAUTH_JWT_SECRET: process.env.NODE_ENV === 'production' ? z.string().min(1) : z.string().min(1).optional(),
 	NEXTAUTH_URL: z.preprocess(
@@ -29,6 +31,8 @@ const server = z.object({
  */
 const client = z.object({
 	// NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+	NEXT_PUBLIC_TMDB_IMG_URL: z.string().url(),
+	NEXT_PUBLIC_URL: z.string().url()
 })
 
 /**
@@ -44,6 +48,10 @@ const processEnv = {
 	GITHUB_SECRET: process.env.GITHUB_SECRET,
 	GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
 	GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+	TMDB_URL: process.env.TMDB_URL,
+	NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
+	NEXT_PUBLIC_TMDB_IMG_URL: process.env.NEXT_PUBLIC_TMDB_IMG_URL,
+	TMDB_API: process.env.TMDB_API,
 	NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
 	NEXTAUTH_JWT_SECRET: process.env.NEXTAUTH_JWT_SECRET,
 	NEXTAUTH_URL: process.env.NEXTAUTH_URL

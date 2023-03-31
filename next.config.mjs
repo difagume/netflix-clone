@@ -17,6 +17,13 @@ const config = {
 	i18n: {
 		locales: ['es'],
 		defaultLocale: 'es'
+	},
+	images: {
+		remotePatterns: [
+			{
+				hostname: 'image.tmdb.org'
+			}
+		]
 	}
 }
 export default config

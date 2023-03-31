@@ -1,13 +1,14 @@
 import fetcher from '@/utils/fetcher'
 import useSwr from 'swr'
 
-const useMovie = (id?: string | number) => {
-	const { data, error, isLoading } = useSwr(id ? `/api/movies/${id}` : null, fetcher, {
+const useTmdbMovieVideos = (id: number) => {
+	const { data, error, isLoading } = useSwr(`/api/movies/tmdb/videos/${id}`, fetcher, {
 		revalidateIfStale: false,
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false
 	})
+
 	return { data, error, isLoading }
 }
 
-export default useMovie
+export default useTmdbMovieVideos

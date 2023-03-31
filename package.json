@@ -27,6 +27,8 @@
     "next-auth": "^4.20.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.4.3",
+    "react-youtube": "^10.1.0",
     "superjson": "1.9.1",
     "swr": "^2.1.0",
     "zod": "^3.20.6",
@@ -50,7 +52,7 @@
     "prettier": "^2.8.1",
     "prettier-plugin-tailwindcss": "^0.2.1",
     "prisma": "^4.11.0",
-    "rome": "^11.0.0",
+    "rome": "^12.0.0",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
   },

@@ -1,11 +1,11 @@
+import { useAppStore } from '@/hooks/useAppStore'
 import useBillboard from '@/hooks/useBillboard'
-import useInfoModal from '@/hooks/useInfoModal'
 import { useCallback } from 'react'
-import { InfoIco } from './Icons'
+import { InfoIcon } from './Icons'
 import PlayButton from './PlayButton'
 
 const Billboard: React.FC = () => {
-	const { openModal } = useInfoModal()
+	const { openModal } = useAppStore()
 	const { data } = useBillboard()
 
 	const handleOpenModal = useCallback(() => {
@@ -35,7 +35,7 @@ const Billboard: React.FC = () => {
 						className='bg-white text-white bg-opacity-30 rounded-md py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg font-semibold flex flex-row items-center hover:bg-opacity-20 transition'
 						onClick={handleOpenModal}
 					>
-						<InfoIco className='mr-1 w-5 h-5' />
+						<InfoIcon className='mr-1 w-5 h-5' />
 						More Info
 					</button>
 				</div>

@@ -3,17 +3,29 @@ import Footer from '@/components/Footer'
 import InfoModal from '@/components/InfoModal'
 import MovieList from '@/components/MovieList'
 import Navbar from '@/components/Navbar'
+import { useAppStore } from '@/hooks/useAppStore'
 import useFavorites from '@/hooks/useFavorites'
-import useInfoModal from '@/hooks/useInfoModal'
 import useMovieList from '@/hooks/useMovieList'
-import { type NextPageContext, type NextPage } from 'next'
+import useTmdbMovieList from '@/hooks/useTmdbMovieList'
+import { type NextPage, type NextPageContext } from 'next'
 import { getSession } from 'next-auth/react'
 import Head from 'next/head'
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 
 const Home: NextPage = () => {
+	useTmdbMovieList()
 	const { data: movies = [] } = useMovieList()
 	const { data: favorites = [] } = useFavorites()
-	const { isOpen, closeModal } = useInfoModal()
+	const { isOpen, closeModal, tmdbMovies, setTmdbPageIndex } = useAppStore()
+	const { ref, inView } = useInView({
+		threshold: 0
+		// 'rootMargin': '100px 0px'
+	})
+
+	useEffect(() => {
+		if (inView) setTmdbPageIndex()
+	}, [inView])
 
 	return (
 		<>
@@ -38,8 +50,11 @@ const Home: NextPage = () => {
 			<div className='pb-40'>
 				<MovieList title='Trending Now' data={movies} />
 				<MovieList title='My List' data={favorites} />
+				<MovieList title='TMDB' data={tmdbMovies} isTmdb />
 			</div>
-			<Footer />
+			<div ref={ref}>
+				<Footer />
+			</div>
 		</>
 	)
 }

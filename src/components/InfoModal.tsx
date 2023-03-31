@@ -1,9 +1,15 @@
 import FavoriteButton from '@/components/FavoriteButton'
 import PlayButton from '@/components/PlayButton'
-import useInfoModal from '@/hooks/useInfoModal'
+import { env } from '@/env.mjs'
+import { useAppStore } from '@/hooks/useAppStore'
 import useMovie from '@/hooks/useMovie'
+import { setNew } from '@/utils/utils'
+import { isEmpty } from 'lodash'
 import { useCallback, useEffect, useState } from 'react'
-import { CloseIco } from './Icons'
+import BlurImage from './BlurImage'
+import { CloseIcon } from './Icons'
+
+const tmdbImageUl = `${env.NEXT_PUBLIC_TMDB_IMG_URL}/t/p/w780`
 
 interface InfoModalProps {
 	visible?: boolean
@@ -11,10 +17,13 @@ interface InfoModalProps {
 }
 
 const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
+	const { movieId } = useAppStore()
+	const { data = {} } = useMovie(movieId)
 	const [isVisible, setIsVisible] = useState<boolean>(!!visible)
 
-	const { movieId } = useInfoModal()
-	const { data = {} } = useMovie(movieId)
+	const istmdbMovie = !Object.hasOwn(data, 'thumbnailUrl')
+	const image = istmdbMovie ? tmdbImageUl + data.backdrop_path : data.thumbnailUrl
+	const description = istmdbMovie ? data.overview : data.description
 
 	useEffect(() => {
 		setIsVisible(!!visible)
@@ -27,7 +36,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
 		}, 300)
 	}, [onClose])
 
-	if (!visible) {
+	if (!visible || isEmpty(data)) {
 		return null
 	}
 
@@ -36,23 +45,27 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
 			<div className='relative w-auto mx-auto max-w-3xl rounded-md overflow-hidden'>
 				<div
 					className={`${
-						isVisible ? 'scale-100' : 'scale-0'
+						isVisible ? 'scale-100' : 'scale-100'
 					} transform duration-300 relative flex-auto bg-zinc-900 drop-shadow-md`}
 				>
 					<div className='relative h-96'>
-						<video
-							poster={data?.thumbnailUrl}
-							autoPlay
-							muted
-							loop
-							src={data?.videoUrl}
-							className='w-full brightness-[60%] object-cover h-full text-'
-						/>
+						{istmdbMovie ? (
+							<BlurImage alt={data?.title} src={image} size='33vm' />
+						) : (
+							<video
+								poster={image}
+								autoPlay
+								muted
+								loop
+								src={data?.videoUrl}
+								className='w-full brightness-[60%] object-cover h-full'
+							/>
+						)}
 						<div
 							onClick={handleClose}
 							className='cursor-pointer absolute top-3 right-3 h-10 w-10 rounded-full bg-black bg-opacity-70 flex items-center justify-center'
 						>
-							<CloseIco className='text-white w-6' />
+							<CloseIcon className='text-white w-6' />
 						</div>
 						<div className='absolute bottom-[10%] left-10'>
 							<p className='text-white text-3xl md:text-4xl h-full lg:text-5xl font-bold mb-8'>{data?.title}</p>
@@ -64,12 +77,30 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
 					</div>
 
 					<div className='px-12 py-8'>
-						<div className='flex flex-row items-center gap-2 mb-8'>
-							<p className='text-green-400 font-semibold text-lg'>New</p>
-							<p className='text-white text-lg'>{data?.duration}</p>
-							<p className='text-white text-lg'>{data?.genre}</p>
+						<div className='flex flex-row items-center gap-2 mb-4'>
+							{istmdbMovie ? (
+								<p className='text-green-400 font-semibold text-lg'>
+									{setNew(data?.release_date)}
+									<span className='text-white'> {data?.release_date?.substring(0, 4)}</span>
+								</p>
+							) : (
+								<>
+									<p className='text-green-400 font-semibold text-lg'>New</p>
+									<p className='text-white text-lg'>{data?.duration}</p>
+									<p className='text-white text-lg'>{data?.genre}</p>
+								</>
+							)}
 						</div>
-						<p className='text-white text-lg'>{data?.description}</p>
+						{istmdbMovie && (
+							<div className='mb-2'>
+								{data.genres?.map((genre: { id: number; name: string }) => (
+									<span key={genre.id} className='text-gray-300 text-sm'>
+										{`${genre.name} `}
+									</span>
+								))}
+							</div>
+						)}
+						<p className='text-white text-lg'>{description}</p>
 					</div>
 				</div>
 			</div>
