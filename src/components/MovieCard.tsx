@@ -18,14 +18,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 				src={data.thumbnailUrl}
 				alt='Movie'
 				draggable={false}
-				className='cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[12vw]'
+				className='cursor-pointer object-cover transition duration-500 shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-75 w-full h-[12vw]'
 			/>
-			<div className='opacity-0 absolute top-0 transition duration-200 z-10 invisible sm:visible delay-300 w-full scale-0 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:translate-x-[2vw] group-hover:opacity-100'>
+			<div className='opacity-0 absolute top-0 transition duration-500 z-10 invisible sm:visible delay-75 w-full scale-0 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:translate-x-[2vw] group-hover:opacity-100'>
 				<img
 					src={data.thumbnailUrl}
 					alt='Movie'
 					draggable={false}
-					className='cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]'
+					className='cursor-pointer object-cover transition duration-500 shadow-xl rounded-t-md w-full h-[12vw]'
 				/>
 				<div className='z-10 bg-zinc-900 p-2 lg:p-4 absolute w-full transition shadow-md rounded-b-md'>
 					<div className='flex flex-row items-center gap-3'>
