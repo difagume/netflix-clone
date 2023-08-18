@@ -30,7 +30,7 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Netflix Clone App</title>
+				<title>Netfliz Clone App</title>
 				<meta
 					property='description'
 					content='This website is an educational project and is not intended to be an official Netflix replica. 
